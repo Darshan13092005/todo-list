@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List Application</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen py-8 px-4 gradient-bg">
+    <div class="max-w-2xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <div class="header-icon mb-4">
+                <div class="icon-wrapper">📝</div>
+            </div>
+            <h1 class="text-5xl font-bold mb-2 gradient-text">My To Do List</h1>
+            <p class="text-lg text-white/90 font-medium">Stay organized and productive ✨</p>
+        </header>
+
+        <!-- Add Task Section -->
+        <div class="add-task-card p-6 mb-6">
+            <div class="flex flex-col sm:flex-row gap-3">
+                <input 
+                    type="text" 
+                    id="taskInput" 
+                    placeholder="✨ Enter a new task..." 
+                    class="task-input flex-1 px-5 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent text-gray-800 font-medium"
+                >
+                <button 
+                    id="addTaskBtn" 
+                    class="add-btn px-8 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 transition-all duration-300 font-bold text-white shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                    ➕ Add Task
+                </button>
+            </div>
+            <div id="successMessage" class="mt-3 text-green-400 text-sm font-semibold hidden fade-in flex items-center gap-2">
+                <span class="text-xl">✓</span> Task added successfully!
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-section mb-6">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-white font-semibold">Progress</span>
+                <span id="progressText" class="text-white font-bold">0%</span>
+            </div>
+            <div class="progress-bar-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+        </div>
+
+        <!-- Tasks List Section -->
+        <div class="tasks-card p-6">
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
+                <h2 class="text-2xl font-bold gradient-text-2">Your Tasks</h2>
+                <div class="flex items-center gap-4">
+                    <div class="task-stats">
+                        <span id="taskCount" class="text-white font-bold text-lg">0</span>
+                        <span class="text-white/80 ml-1">remaining</span>
+                    </div>
+                    <button 
+                        id="deleteAllBtn" 
+                        class="delete-all-btn px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all duration-300 text-sm font-bold text-white shadow-md hover:shadow-lg transform hover:scale-105 hidden"
+                    >
+                        🗑️ Delete All
+                    </button>
+                </div>
+            </div>
+            <div id="tasksContainer" class="space-y-3 max-h-96 overflow-y-auto smooth-scroll">
+                <!-- Tasks will be rendered here -->
+            </div>
+            <div id="emptyState" class="text-center py-12 text-white/70 hidden">
+                <div class="empty-icon mb-4">📋</div>
+                <p class="text-lg font-medium">No tasks yet. Add one above to get started! 🚀</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reward Container for Animations -->
+    <div id="rewardContainer" class="reward-container"></div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="confirm-modal hidden">
+        <div class="confirm-modal-content">
+            <div class="confirm-icon">⚠️</div>
+            <h3 class="confirm-title">Delete All Tasks?</h3>
+            <p class="confirm-message">This action cannot be undone. All tasks will be permanently deleted.</p>
+            <div class="confirm-buttons">
+                <button id="confirmDeleteBtn" class="confirm-btn confirm-yes">Yes, Delete All</button>
+                <button id="cancelDeleteBtn" class="confirm-btn confirm-no">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
